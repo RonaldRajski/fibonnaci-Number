@@ -10,7 +10,7 @@ package academy.learnProgramming;
 //********************************************
 // * Name: Ronald Rajski
 // * Class: COSC 1174
-// * Assignment: Fibonnaci Sums
+// * Assignment: Fibonacci Sums
 // * Date: 10/10/2021
 // ********************************************
 
@@ -25,14 +25,14 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception{
-        System.out.println("Fibonnaci Calculator");
+        System.out.println("Fibonacci Calculator");
         long fibMax = getNumber();
 
         fibsum= new long[(int)fibMax + 1];
 
-        System.out.printf("%nThe Fibonnaci sum at index %d is %d", (int)fibMax, fib(fibMax));
+        System.out.printf("%nThe Fibonacci sum at index %d is %d. ", (int)fibMax, fib(fibMax));
 
-        System.out.println("The full sequence: ");
+        System.out.println(" Here is The full sequence: ");
         for (long fibNum: fibsum){
             System.out.print(fibNum + " ");
         }
@@ -41,10 +41,9 @@ public class Main {
         System.out.println("\n\n");
 
     }
-//    Calculates the Fibonnaci value at a given index
-    static long fib(long n){
-//        n index value to calculate the Fibbonci value
-//            return int - the fibonnaci value at given index
+
+//        n index value to calculate the Fibonacci value
+//            return int - the fibonacci value at given index
         static long fib(long n){
             // base case
             if(n <= 1) {
@@ -53,11 +52,31 @@ public class Main {
                 // return the value
                 return n;
             } else {
-                // use recurssion to calculate the value & add it to the array
+                // use recurssion to calculate the value and add to the array
                 fibsum[(int)n] = fib(n - 1) + fib(n - 2);
-                // return the value @index n
-                return fibs[(int)n];
+                // return index n's value
+                return fibsum[(int)n];
             }
+        }
+
+//        prompts for and validates an integer greater than 1 to initiate the Fibonacci sequence
+        static long getNumber(){
+            long validNum = 0;
+
+            System.out.println("Enter a number to start the Fibonacci sequence: ");
+//            user input
+            long number = input.nextLong();
+
+            if(number>1){
+                validNum = number;
+            }
+            else{
+                System.out.println("Number must be greater than 1: ");
+                validNum = getNumber();
+            }
+            return validNum;
+
+
         }
 
 
